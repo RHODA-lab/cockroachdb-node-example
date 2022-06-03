@@ -1,3 +1,4 @@
+import sleep from 'await-sleep'
 var serviceBindings = require('kube-service-bindings');
 var _db;
 var { Pool } = require("pg");
@@ -49,7 +50,8 @@ async function main() {
     
     console.log('check client');
     //console.log(client);
-
+    
+    await sleep(1500000000);
 }
 
 main().catch(console.error);
