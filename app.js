@@ -19,7 +19,7 @@ try {
     console.log('bindings failed');
 };
 
-fs.writeFile(
+/*fs.writeFile(
     "/tmp/root.crt",
     bindings["root.crt"],
     {
@@ -27,7 +27,7 @@ fs.writeFile(
         flag: "a"
     },
     function(){ console.log("The file was saved!") }
-)
+)*/
 //fs.writeFile('/tmp/root.crt', bindings["root.crt"], function (err) {
 //  if (err) return console.log(err);
 // console.log("The file was saved!");
@@ -40,9 +40,10 @@ const pool = new Pool({
     database: bindings.database,
     port: bindings.port,
     sslmode: bindings.sslmode,
+    options: bindings.options,
     ssl: {
         rejectUnauthorized: false,
-        ca: fs.readFileSync('/tmp/root.crt').toString()
+        ca: bindings["root.crt"].toString()
     }
 })
 
