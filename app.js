@@ -19,10 +19,19 @@ try {
     console.log('bindings failed');
 };
 
-fs.writeFile('/tmp/root.crt', bindings["root.crt"], function (err) {
-  if (err) return console.log(err);
-  console.log("The file was saved!");
-});
+fs.writeFile(
+    "/tmp/root.crt",
+    bindings["root.crt"],
+    {
+        encoding: "base64",
+        flag: "a"
+    },
+    function(){ console.log("The file was saved!") }
+)
+//fs.writeFile('/tmp/root.crt', bindings["root.crt"], function (err) {
+//  if (err) return console.log(err);
+// console.log("The file was saved!");
+//});
 
 const pool = new Pool({
     user: bindings.user,
