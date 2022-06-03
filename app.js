@@ -11,7 +11,7 @@ try {
     console.log('check bindings');
     console.log(bindings);
     console.log('verifying if cert can be read from the binding object:');
-    console.log(bindings.'root.crt');
+    //console.log(bindings.'root.crt');
 } catch (err) { // proper error handling here
     console.log('bindings failed');
 };
