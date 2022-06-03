@@ -19,7 +19,7 @@ try {
     console.log('bindings failed');
 };
 
-fs.writeFile('./root.crt', bindings["root.crt"], function (err) {
+fs.writeFile('/tmp/root.crt', bindings["root.crt"], function (err) {
   if (err) return console.log(err);
   console.log("The file was saved!");
 });
@@ -33,7 +33,7 @@ const pool = new Pool({
     sslmode: bindings.sslmode,
     ssl: {
         rejectUnauthorized: false,
-        ca: fs.readFileSync('./root.crt').toString()
+        ca: fs.readFileSync('/tmp/root.crt').toString()
     }
 })
 
