@@ -42,6 +42,20 @@ pool
   .catch(err => console.error('error connecting', err.stack))
   .then(() => pool.end())
 
+var create_database = "CREATE TABLE IF NOT EXISTS highscores ( name STRING NOT NULL, cloud STRING NOT NULL, zone STRING NOT NULL, host STRING NOT NULL, score INT NOT NULL, level INT NOT NULL, date DATE NOT NULL, referer STRING NOT NULL, user_agent STRING NOT NULL, hostname STRING NOT NULL, ip_addr STRING NOT NULL)";
+
+pool.query(create_database, function(err, rows){
+        if(err){
+            console.error(err);
+            callback(err, rows);
+            return;
+        }else{
+            console.log(rows);
+            callback(err, rows);
+            return;
+        }
+    });
+
 async function main() {
     /**
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
