@@ -24,7 +24,7 @@ const pool = new Pool({
     port: bindings.port,
     ssl: {
         rejectUnauthorized: false,
-        ca: bindings.'root.crt'
+        //ca: bindings.'root.crt'
     }
 })
 
