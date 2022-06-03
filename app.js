@@ -1,10 +1,8 @@
-//import sleep from 'await-sleep'
 var serviceBindings = require('kube-service-bindings');
 var _db;
 var { Pool } = require("pg");
 var fs = require('fs');
 
-//var certstr = "root.crt";
 
 var bindings;
 try {
@@ -19,19 +17,6 @@ try {
     console.log('bindings failed');
 };
 
-/*fs.writeFile(
-    "/tmp/root.crt",
-    bindings["root.crt"],
-    {
-        encoding: "base64",
-        flag: "a"
-    },
-    function(){ console.log("The file was saved!") }
-)*/
-//fs.writeFile('/tmp/root.crt', bindings["root.crt"], function (err) {
-//  if (err) return console.log(err);
-// console.log("The file was saved!");
-//});
 
 const pool = new Pool({
     user: bindings.user,
