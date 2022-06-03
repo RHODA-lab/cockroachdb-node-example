@@ -2,6 +2,7 @@
 var serviceBindings = require('kube-service-bindings');
 var _db;
 var { Pool } = require("pg");
+var fs = require('fs');
 
 //var certstr = "root.crt";
 
@@ -18,15 +19,21 @@ try {
     console.log('bindings failed');
 };
 
+fs.writeFile('./root.crt', bindings["root.crt"], function (err) {
+  if (err) return console.log(err);
+  console.log("The file was saved!");
+});
+
 const pool = new Pool({
     user: bindings.user,
     password: bindings.password,
     host: bindings.host,
     database: bindings.database,
     port: bindings.port,
+    sslmode: bindings.sslmode,
     ssl: {
         rejectUnauthorized: false,
-        ca: bindings["root.crt"].toString()
+        ca: fs.readFileSync('./root.crt').toString()
     }
 })
 
