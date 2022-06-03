@@ -1,7 +1,7 @@
 var serviceBindings = require('kube-service-bindings');
 var _db;
 
-let bindings;
+var bindings;
 try {
     // check if the deployment has been bound to a pg instance through
     // service bindings. If so use that connect info
