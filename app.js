@@ -17,7 +17,8 @@ async function main() {
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
      * See https://docs.mongodb.com/drivers/node/ for more details
      */
-    const url = bindings.url + '?retryWrites=true&w=majority';
+    //const url = bindings.url + '?retryWrites=true&w=majority';
+    const url = "uniinitialized";
     console.log('check url 1001');
     console.log(url);
     
