@@ -25,6 +25,16 @@ const pool = new Pool({
     }
 })
 
+//checking connection with pg driver to cockroachdb
+pool
+  .connect()
+  .then(client => {
+    console.log('connected')
+    client.release()
+  })
+  .catch(err => console.error('error connecting', err.stack))
+  .then(() => pool.end())
+
 async function main() {
     /**
      * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
