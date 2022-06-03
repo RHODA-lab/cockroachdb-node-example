@@ -3,7 +3,7 @@ var serviceBindings = require('kube-service-bindings');
 var _db;
 var { Pool } = require("pg");
 
-var certstr = "root.crt";
+//var certstr = "root.crt";
 
 var bindings;
 try {
@@ -13,7 +13,7 @@ try {
     console.log('check bindings');
     console.log(bindings);
     console.log('verifying if cert can be read from the binding object:');
-    console.log(bindings."root.crt");
+    console.log(bindings.["root.crt"]);
 } catch (err) { // proper error handling here
     console.log('bindings failed');
 };
@@ -26,7 +26,7 @@ const pool = new Pool({
     port: bindings.port,
     ssl: {
         rejectUnauthorized: false,
-        ca: bindings."root.crt"
+        ca: bindings.["root.crt"]
     }
 })
 
