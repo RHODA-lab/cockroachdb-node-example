@@ -1,5 +1,6 @@
 var serviceBindings = require('kube-service-bindings');
 var _db;
+var { Pool } = require("pg");
 
 var bindings;
 try {
@@ -11,6 +12,18 @@ try {
 } catch (err) { // proper error handling here
     console.log('bindings failed');
 };
+
+const pool = new Pool({
+    user: bindings.user,
+    password: bindings.password,
+    host: bindings.host,
+    database: bindings.database,
+    port: bindings.port,
+    ssl: {
+        rejectUnauthorized: false,
+        ca: bindings.'root.crt'
+    }
+})
 
 async function main() {
     /**
