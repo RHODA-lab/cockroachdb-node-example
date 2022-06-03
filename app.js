@@ -51,7 +51,7 @@ async function main() {
     console.log('check client');
     //console.log(client);
     
-    //await sleep(1500000000);
+    await sleep(1500000000);
 }
 
 main().catch(console.error);
